@@ -60,5 +60,9 @@ $conn->close();
             </div>
         <?php endforeach; ?>
     </div>
+    <button onclick="window.location.href='add_clothes.php';">Add new clothes here!</button>
+    <button onclick="window.location.href='admin.php';">Admin</button>
+
+
 </body>
 </html>

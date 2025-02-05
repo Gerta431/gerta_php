@@ -1,9 +1,4 @@
 <?php
-session_start();
-if (!isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
-    header("Location: login.php");  // Only admin can access this page
-    exit();
-}
 
 $servername = "localhost";
 $username = "root";

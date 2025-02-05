@@ -1,38 +1,31 @@
-<?php
-// Check if form is submitted and process the data
+<?php 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $image = $_FILES['image']['name']; // Image file
+    $image = $_FILES['image']['name']; 
 
-    // Move the uploaded image to the 'images' folder
-    $target_dir = "images/";
+    $target_dir = "index.php";
     $target_file = $target_dir . basename($image);
     move_uploaded_file($_FILES['image']['index.php'], $target_file);
 
-    // Database connection
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "clothing_store";
     $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Prepare SQL query to insert new clothing item into database
+
     $sql = "INSERT INTO clothes (name, description, price, image) VALUES ('$name', '$description', '$price', '$image')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New clothing item added successfully!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    // Close the database connection
+    }                   
     $conn->close();
 }
 ?>
@@ -58,21 +51,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container">
     <h2>Add New Clothing Item</h2>
+    
+
+
     <form action="add_clothes.php" method="POST" enctype="multipart/form-data">
-        <!-- Clothing Item 1 -->
         <div class="form-group">
             <label for="name">Clothing Name:</label>
-            <input type="text" id="name" name="name" value="Basic T-Shirt" required>
+            <input type="text" id="name" name="name" value="" required>
         </div>
 
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4" required>A comfortable cotton t-shirt in various colors, perfect for everyday wear.</textarea>
+            <textarea id="description" name="description" rows="4" required></textarea>
         </div>
 
         <div class="form-group">
             <label for="price">Price ($):</label>
-            <input type="number" id="price" name="price" value="19.99" step="0.01" required>
+            <input type="number" id="price" name="price" value="" step="0.01" required>
         </div>
 
         <div class="form-group">
@@ -81,38 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <input type="submit" value="Add Clothing Item">
-
-
-
     </form>
 
-    <form action="add_clothes.php" method="POST" enctype="multipart/form-data">
-    <!-- Clothing Item 2 -->
-    <div class="form-group">
-        <label for="name">Clothing Name:</label>
-        <input type="text" id="name" name="name" value="Blue Jeans" required>
-    </div>
 
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" required>Classic denim jeans with a regular fit, perfect for casual occasions.</textarea>
-    </div>
 
-    <div class="form-group">
-        <label for="price">Price ($):</label>
-        <input type="number" id="price" name="price" value="39.99" step="0.01" required>
-    </div>
-
-    <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required>
-    </div>
-
-    <input type="submit" value="Add Clothing Item">
-</form>
 
 </div>
-
 
 </body>
 </html>
