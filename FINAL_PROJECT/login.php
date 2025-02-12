@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
-    header("Location: index.php");  // Redirect to the homepage if logged in
+    header("Location: index.php");
     exit();
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         if (password_verify($input_password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
-            header("Location: index.php");  // Redirect to the homepage if login is successful
+            header("Location: index.php");
             exit();
         } else {
             $error = "Incorrect password!";

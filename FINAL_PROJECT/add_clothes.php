@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         h2 { text-align: center; }
         label { font-weight: bold; display: block; margin: 10px 0; }
         input, textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid #ccc; }
-        input[type="submit"] { background-color: #333; color: white; border: none; cursor: pointer; }
+        input[type="submit"] { background-color: #bbbbbb; color: white; border: none; cursor: pointer; }
         input[type="submit"]:hover { background-color: #555; }
         .form-group { margin-bottom: 15px; }
     </style>
@@ -78,9 +78,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Add Clothing Item">
     </form>
 
+    <button onclick="window.location.href='index.php';">Return to Clothing store!</button>
 
 
+    <style>
+    button {
+        background-color: #bbbbbb;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        padding: 12px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
+    button:hover {
+        background-color: #a1a1a1 ;
+        transform: scale(1.05);
+    }
+
+    button:active {
+        background-color: #bbbbbb;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+</style>
 </div>
 
 </body>

@@ -67,6 +67,37 @@ $conn->close();
                 </td>
             </tr>
         <?php endforeach; ?>
+        <button onclick="window.location.href='index.php';">Return to Clothing store!</button>
+   
+    
+
     </table>
+    <style>
+    button {
+        background-color: #bbbbbb;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        padding: 12px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #a1a1a1 ;
+        transform: scale(1.05);
+    }
+
+    button:active {
+        background-color: #bbbbbb;
+    }
+
+    button:focus {
+        outline: none;
+    }
+
+</style>
 </body>
 </html>
