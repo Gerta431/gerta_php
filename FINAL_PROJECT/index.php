@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");  // Redirect to login page if not logged in
+    header("Location: login.php");
     exit();
 }
 
@@ -73,7 +73,7 @@ $conn->close();
                 <h3><?php echo $item['name']; ?></h3>
                 <p><?php echo $item['description']; ?></p>
                 <p><strong>$<?php echo number_format($item['price'], 2); ?></strong></p>
-                  <!-- Add the Buy Button -->
+
             <button class="buy-button" onclick="window.location.href='checkout.php?item_id=<?php echo $item['id']; ?>'">Buy</button>
             </div>
         <?php endforeach; ?>

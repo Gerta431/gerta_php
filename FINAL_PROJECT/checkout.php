@@ -1,24 +1,24 @@
 <?php
-// Start session to use session variables
+
 session_start();
 
-// Database connection
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "clothing_store";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if item_id is provided in the URL
+
 if (isset($_GET['item_id'])) {
     $item_id = $_GET['item_id'];
 
-    // Query the database to get the item details
+
     $sql = "SELECT * FROM clothes WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $item_id);
@@ -36,7 +36,7 @@ if (isset($_GET['item_id'])) {
     exit();
 }
 
-// Close the database connection
+
 $conn->close();
 ?>
 
@@ -107,7 +107,7 @@ $conn->close();
 <div class="container">
     <h1>Checkout</h1>
 
-    <!-- Display the selected item details -->
+
     <div class="item-details">
         <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>">
         <div>
